@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Segmentation</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🛍️ Customer Segmentation</h1>
+    <p>K-Means Clustering Analysis</p>
+
+    <div class="metric">
+        ⭐ Silhouette Score: <b>{{ silhouette }}</b>
+    </div>
+
+    <form method="POST">
+        <input type="number" name="income" placeholder="Annual Income (k$)" required>
+        <input type="number" name="score" placeholder="Spending Score (1-100)" required>
+        <button type="submit">Find Customer Group</button>
+    </form>
+
+    {% if cluster is not none %}
+        <div class="result">
+            🎯 Customer belongs to <b>Cluster {{ cluster }}</b>
+        </div>
+    {% endif %}
+
+    <h3>📊 Analysis</h3>
+
+    <img src="/static/elbow.png" class="graph">
+    <img src="/static/clusters.png" class="graph">
+</div>
+
+</body>
+</html>
